@@ -38,7 +38,7 @@ open class SPLarkSettingsController: UIViewController {
         fatalError("SPLarkSettingsController - Need implement function")
     }
     
-    open func settingSubtitle(index: Int, highlighted: Bool) -> String? {
+    open func settingImage(index: Int, highlighted: Bool) -> UIImage? {
         fatalError("SPLarkSettingsController - Need implement function")
     }
     
@@ -108,7 +108,7 @@ extension SPLarkSettingsController: UICollectionViewDataSource, UICollectionView
             let cell = self.collectionView.dequeueCell(indexPath: indexPath)
             let highlighted = self.settingHighlighted(index: indexPath.row)
             cell.titleLabel.text = self.settingTitle(index: indexPath.row, highlighted: highlighted)
-            cell.subtitleLabel.text = self.settingSubtitle(index: indexPath.row, highlighted: highlighted)
+            cell.imageView.image = self.settingImage(index: indexPath.row, highlighted: highlighted)
             cell.setHighlighted(
                 highlighted,
                 color: highlighted ? self.settingColorHighlighted(index: indexPath.row) : UIColor.white.withAlphaComponent(0.1)
@@ -124,7 +124,7 @@ extension SPLarkSettingsController: UICollectionViewDataSource, UICollectionView
             self.settingDidSelect(index: indexPath.row) {
                 let highlighted = self.settingHighlighted(index: indexPath.row)
                 cell.titleLabel.text = self.settingTitle(index: indexPath.row, highlighted: highlighted)
-                cell.subtitleLabel.text = self.settingSubtitle(index: indexPath.row, highlighted: highlighted)
+                cell.imageView.image = self.settingImage(index: indexPath.row, highlighted: highlighted)
                 cell.setHighlighted(
                     highlighted,
                     color: highlighted ? self.settingColorHighlighted(index: indexPath.row) : UIColor.white.withAlphaComponent(0.1)

@@ -25,7 +25,7 @@ import UIKit
 class SPLarkSettingsCollectionViewCell: UICollectionViewCell {
 
     let titleLabel = UILabel()
-    let subtitleLabel = UILabel()
+    let imageView = UIImageView()
     
     override var isHighlighted: Bool{
         didSet {
@@ -63,12 +63,8 @@ class SPLarkSettingsCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = "Title"
         self.addSubview(self.titleLabel)
         
-        self.subtitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        self.subtitleLabel.numberOfLines = 1
-        self.subtitleLabel.textAlignment = .left
-        self.subtitleLabel.textColor = UIColor.white
-        self.subtitleLabel.text = "Subtitle"
-        self.addSubview(self.subtitleLabel)
+        self.imageView.tintColor = UIColor.white
+        self.addSubview(self.imageView)
     }
     
     func setHighlighted(_ state: Bool, color: UIColor) {
@@ -78,7 +74,7 @@ class SPLarkSettingsCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.titleLabel.text = "Title"
-        self.subtitleLabel.text = "Subtitle"
+        self.imageView.image = nil
         self.layoutSubviews()
     }
     
@@ -89,7 +85,7 @@ class SPLarkSettingsCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        if self.subtitleLabel.text == nil {
+        if self.imageView.image == nil {
             let topInset: CGFloat = 19 / 2
             let sideInset: CGFloat = 19 / 1.5
             
@@ -104,13 +100,13 @@ class SPLarkSettingsCollectionViewCell: UICollectionViewCell {
             let topInset: CGFloat = 19 / 2
             let sideInset: CGFloat = 19 / 1.5
             
-            self.subtitleLabel.sizeToFit()
-            self.subtitleLabel.frame.origin.x = sideInset
-            self.subtitleLabel.frame = CGRect.init(x: self.subtitleLabel.frame.origin.x, y: self.subtitleLabel.frame.origin.y, width: self.frame.width - sideInset * 2, height: self.subtitleLabel.frame.height)
-            self.subtitleLabel.frame.origin.y = self.frame.height - topInset * 1.2 - self.subtitleLabel.frame.height
+            self.imageView.sizeToFit()
+            self.imageView.frame.origin.x = sideInset
+            self.imageView.frame = CGRect.init(x: self.imageView.frame.origin.x, y: self.imageView.frame.origin.y, width: self.frame.width - sideInset * 2, height: self.imageView.frame.height)
+            self.imageView.frame.origin.y = self.frame.height - topInset * 1.2 - self.imageView.frame.height
             
             self.titleLabel.sizeToFit()
-            self.titleLabel.frame = CGRect.init(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y, width: self.frame.width - sideInset * 2, height: self.subtitleLabel.frame.origin.y - topInset - topInset / 2)
+            self.titleLabel.frame = CGRect.init(x: self.titleLabel.frame.origin.x, y: self.titleLabel.frame.origin.y, width: self.frame.width - sideInset * 2, height: self.imageView.frame.origin.y - topInset - topInset / 2)
             
             self.titleLabel.frame.origin.x = sideInset
             self.titleLabel.frame.origin.y = topInset * 1.3
